@@ -10,10 +10,20 @@
   $nome= $_POST["nome"];
   $preco= $_POST["preco"];
 
-  if(insereProduto($conexao, $nome, $preco)){
-        echo "<p class= 'alert-success'> O produto $nome, no valor $preco reais, foi cadastrado com sucesso. </p>";
-      } else {
-        echo "<p class= 'alert-danger' > Deu um ruim aqui e o produto não cadastrou.";
+    if (isset($_POST["id"])){
+      $id = $_POST["id"];
+      if (alteraProduto($conexao, $nome, $preco, $id)){
+        header ("Location: cadastro_produto.php?alterou=true&nome={$nome}&preco={$preco}");
       }
+      echo mysqli_error($conexao);
+      header("Location: cadastro_produto.php?alterou=false");
+    } else {
+
+  if(insereProduto($conexao, $nome, $preco)){
+    header("Location: cadastro_produto.php?cadastrou=true&nome={$nome}&preco={$preco}");
+  } else {
+    header("Location: cadastro_produto.php?cadastrou=false");
+  }
+  }
   include("rodape.php");
  ?>

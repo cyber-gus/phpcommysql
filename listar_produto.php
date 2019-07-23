@@ -1,7 +1,6 @@
 <?php
 include("cabecalho.php");
-include("bd.php");
-include("produto_bd.php");?>
+?>
 <table class="table">;
 <?php
 $produtos = listar_produtos($conexao);

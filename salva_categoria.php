@@ -3,14 +3,23 @@
       include("categoria_bd.php");
       include("bd.php"); ?>
 <?php
-$categoria = $_POST["categoria"];
+$categoria = $_POST["nome"];
 $descricao = $_POST["descricao"];
 
-if(insereCategoria($conexao, $categoria, $descricao)){
-  header("Location: cadastro_categoria.php?cadastrou=true&nome={$categoria}&descricao={$descricao}");
-} else {
-  header("Location: cadastro_categoria.php?cadastrou=false");
+if (isset($_POST["id"])){
+  $id = $_POST["id"];
+  if (alteraCategoria($conexao, $categoria, $descricao, $id)){
+    header ("Location: cadastro_categoria.php?alterou=true&nome={$categoria}&descricao={$descricao}");
+  } else{
+  echo mysqli_error($conexao);
 }
-  include("rodape.php");
+} else {
 
- ?>
+if(insereCategoria($conexao, $categoria, $descricao, $id)){
+header("Location: cadastro_categoria.php?cadastrou=true&nome={$categoria}&descricao={$descricao}");
+} else {
+header("Location: cadastro_categoria.php?cadastrou=false");
+}
+}
+include("rodape.php");
+?>

@@ -1,12 +1,7 @@
 <?php
   include("cabecalho.php");
+  include("produto_bd.php");
   include("bd.php");
-    function insereProduto($conexao, $nome, $preco){
-        $query = "insert into PRODUTO (NOME, PRECO) values ('{$nome}',{$preco})";
-        $resultadoDoInsere = mysqli_query($conexao, $query);
-      return $resultadoDoInsere;
-    }
-
   $nome= $_POST["nome"];
   $preco= $_POST["preco"];
 

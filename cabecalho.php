@@ -16,7 +16,7 @@
         <ul class="nav navbar-nav">
           <li><a href="cadastro_produto.php" >Cadastrar produto</a></li>
           <li><a href="cadastro_categoria.php" >Cadastrar categoria</a></li>
-        
+          <li><a href="cadastro_usuario.php" >Fazer Login</a></li>
         </ul>
       </div>
     </div>
